@@ -26,7 +26,6 @@ Lumine Reads is a React + Vite + TypeScript-powered book marketplace featuring a
 ### Admin Features
 - **Book Management**:
   - Add new books.
-  - Edit or delete existing books.
 - **User Management**:
   - View registered users.
   - Switch user roles (e.g., Admin, Regular User).

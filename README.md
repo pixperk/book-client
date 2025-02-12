@@ -1,50 +1,95 @@
-# React + TypeScript + Vite
+# Lumine Reads Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Lumine Reads is a React + Vite + TypeScript-powered book marketplace featuring a curated selection of books, user reviews, and an admin panel for managing content. The client is built for seamless navigation and interaction with features like pagination, filtering, and real-time updates.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### User Features
+- **Home Page**: Showcases featured books.
+  ![Home Page](public/images/homepage.png)
+- **Books Listing Page**:
+  - Browse books with pagination.
+  - Apply filters for price range and author.
+  - Perform custom searches with optimized results using `lodash.debounce`.
+  ![Books Listing](public/images/books-listing.png)
+  ![Books Listing](public/images/books-listing2.png)
+- **Book Review Page**:
+  - View detailed book information.
+  - Read and write reviews.
+  ![Book Review](public/images/book-review.png)
+  ![Book Review](public/images/book-review2.png)
+- **Profile Management**:
+  - View personal profile.
+  - Update user details.
+  ![Profile](public/images/profile.png)
 
-## Expanding the ESLint configuration
+### Admin Features
+- **Book Management**:
+  - Add new books.
+  - Edit or delete existing books.
+- **User Management**:
+  - View registered users.
+  - Switch user roles (e.g., Admin, Regular User).
+  ![Admin Dashboard](public/images/admin-dashboard.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack
+- **React + Vite + TypeScript**
+- **React Router** - For client-side navigation.
+- **Axios** - For API requests.
+- **React Query** - For efficient data fetching and caching.
+- **Lodash.debounce** - For optimized search functionality.
+- **React Hot Toast** - For displaying notifications.
+- **Context API** - For global state management.
+- **Tailwind CSS** - For styling.
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+- Node.js & npm/yarn installed.
+
+### Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/lumine-reads-client.git
+   cd lumine-reads-client
+   ```
+2. Install dependencies:
+   ```sh
+   npm install  # or yarn install
+   ```
+3. Start the development server:
+   ```sh
+   npm run dev  # or yarn dev
+   ```
+
+## Folder Structure
+```
+/ 
+├── public               # Static files
+├── src                  # Application source code
+│   ├── assets           # Static assets
+│   ├── context          # Global state management
+│   ├── pages            # Application pages
+│   ├── queries          # API query functions
+│   ├── App.tsx          # Root component
+│   ├── main.tsx         # Entry point
+├── .gitignore           # Git ignore rules
+├── index.html           # Main HTML file
+├── package.json         # Project dependencies
+├── tsconfig.json        # TypeScript configuration
+├── vite.config.ts       # Vite configuration
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Usage
+- Navigate to `/` to explore featured books.
+- Visit `/books` for the full listing with filters and pagination.
+- Click a book to view details and reviews at `/book/:id`.
+- Admins can manage books and users at `/admin`.
+- Users can update their profile at `/profile`.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Contributing
+Feel free to fork and contribute! Open an issue or create a pull request.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## License
+MIT License
+

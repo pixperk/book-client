@@ -15,7 +15,7 @@ const Books: React.FC = () => {
   const [priceRange, setPriceRange] = useState<{ min: number; max: number }>({ min: 0, max: 1000 })
   const [selectedAuthor, setSelectedAuthor] = useState<string>("")
   const [selectedUser, setSelectedUser] = useState<string>("")
-  const limit = 12
+  const limit = 8
   const navigate = useNavigate()
 
   const { data, isLoading, isError } = useQuery({

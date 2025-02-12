@@ -3,13 +3,15 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 export const token = localStorage.getItem("book-token");
 
-export interface AuthResponse {
-  user: {
-    _id: string;
+interface UserResponse {
+  _id: string;
     name: string;
     email: string;
     role: string;
-  };
+}
+
+export interface AuthResponse {
+  user: UserResponse
   token: string;
 }
 
@@ -37,23 +39,50 @@ export const signup = async (
   return response.data;
 };
 
-
 export const updateProfile = async (
-    userId: string,
-    name: string,
-    email: string
-  ): Promise<AuthResponse> => {
+  userId: string,
+  name: string,
+  email: string
+): Promise<AuthResponse> => {
+  const response = await axios.put(
+    `${API_URL}/users/${userId}`,
+    { name, email },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
-  
-    const response = await axios.put(
-      `${API_URL}/users/${userId}`,
-      { name, email },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, 
-        },
-      }
-    );
-  
-    return response.data;
-  };
+  return response.data;
+};
+
+
+
+export const getAllUsers = async (): Promise<UserResponse[]> => {
+  const response = await axios.get(`${API_URL}/users/all`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+};
+
+
+export const toggleUserRole = async (
+  userId: string,
+): Promise<UserResponse> => {
+  const response = await axios.put(
+    `${API_URL}/users/toggle-role/${userId}`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+};
+

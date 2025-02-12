@@ -32,8 +32,8 @@ const Register: React.FC = () => {
       toast.success("Login successful!");
       navigate("/books")
     },
-    onError : (error)=>{
-      toast.error(error.message)
+    onError : ()=>{
+      toast.error("Registration Unsuccessful")
     }
   });
 

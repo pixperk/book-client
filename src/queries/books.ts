@@ -44,7 +44,7 @@ export const getBooks = async (page = 1, limit = 10): Promise<BooksResponse> => 
   return response.data
 }
 
-export const addBooks = async (title : string, author : string, description : string,price : string) : Promise<Book> => {
+export const addBooks = async (title : string, author : string, description : string,price : number) : Promise<Book> => {
  const response =  await axios.post(`${API_URL}/books`,{
     title, 
     author,
